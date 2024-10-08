@@ -2,7 +2,7 @@ import {
   AmountOfDenom,
   initialAmountOfDenom,
   denominations,
-} from "./constants/denominations.js"
+} from "./constants/denominations"
 
 /**
  * Change Giver
@@ -10,7 +10,10 @@ import {
  * @param total - total due from transaction in pounds
  * @returns changeDue - object of denomination to amount of denomination
  */
-const calculateChange = (given: number, total: number): AmountOfDenom => {
+export const calculateChange = (
+  given: number,
+  total: number
+): AmountOfDenom => {
   let remaining = convertToPence(given) - convertToPence(total)
   let changeDue: AmountOfDenom = initialAmountOfDenom
 
@@ -70,3 +73,4 @@ const convertToPence = (value: number) => parseInt((value * 100).toFixed(0))
 const convertToPounds = (value: number) => parseInt((value / 100).toFixed(0))
 
 outputChange(calculateChange(20, 16.76))
+outputChange(calculateChange(10, 8.21))
