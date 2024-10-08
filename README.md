@@ -1,6 +1,6 @@
-# Change giver recreation of A-level project
+# Change giver
 
-Built using a minimalistic project template for a Node.js & TypeScript apps with native ESM
+A recreation of an A-level task I had in Visual Basic, recreated in TypeScript.
 
 ## Quick Start
 
