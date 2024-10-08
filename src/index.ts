@@ -6,12 +6,12 @@ import {
 
 /**
  * Change Giver
- * @param given - amount given by customer in pence
- * @param total - total due from transaction in pence
+ * @param given - amount given by customer in pounds
+ * @param total - total due from transaction in pounds
  * @returns changeDue - object of denomination to amount of denomination
  */
 const calculateChange = (given: number, total: number): AmountOfDenom => {
-  let remaining = given - total
+  let remaining = convertToPence(given) - convertToPence(total)
   let changeDue: AmountOfDenom = initialAmountOfDenom
 
   while (remaining > 0) {
@@ -53,4 +53,7 @@ const outputChange = (changeDue: AmountOfDenom) => {
   }
 }
 
-outputChange(calculateChange(2000, 1676))
+const convertToPence = (value: number) => parseInt((value * 100).toFixed(0))
+const convertToPounds = (value: number) => parseInt((value / 100).toFixed(0))
+
+outputChange(calculateChange(20, 16.76))
