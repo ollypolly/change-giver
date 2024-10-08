@@ -30,6 +30,12 @@ const calculateChange = (given: number, total: number): AmountOfDenom => {
   return changeDue
 }
 
+/**
+ * Finds the closest lower denomination to the given value
+ * @param goal given goal to find closest value to
+ * @param values possible values, in this case denominations
+ * @returns The closest value or null
+ */
 const findClosest = (goal: number, values: number[]) => {
   const filteredValues = values.filter((value) => value <= goal)
   if (filteredValues.length === 0) {
@@ -40,6 +46,10 @@ const findClosest = (goal: number, values: number[]) => {
   )
 }
 
+/**
+ * Logs the change to the console
+ * @param changeDue Change object
+ */
 const outputChange = (changeDue: AmountOfDenom) => {
   const filteredChange = Object.values(changeDue)
     .filter(({ quantity }) => quantity > 0)
@@ -53,6 +63,9 @@ const outputChange = (changeDue: AmountOfDenom) => {
   }
 }
 
+/**
+ * Utility functions to convert pounds to pence and vice versa, as financial operations should not use floating point arithmatic
+ */
 const convertToPence = (value: number) => parseInt((value * 100).toFixed(0))
 const convertToPounds = (value: number) => parseInt((value / 100).toFixed(0))
 
